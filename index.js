@@ -55,14 +55,8 @@ var server = http.createServer(function(req, res){
             // use the payload of handler, or default to an empty object
             payload = typeof (payload) === 'string'? payload : {};
 
-            // convert the payload to payload string
-            var payloadJSON = JSON.stringify(payload);
-
             res.writeHead(statusCode);
-            res.end(payloadJSON);
-
-            console.log('returning the response as ',statusCode, payloadJSON);
-
+            res.end(JSON.stringify({message: payload}));
         });
     })
 
